@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<script src="js/mui.min.js"></script>
+	<link href="css/mui.min.css" rel="stylesheet" />
+	<link href="css/index.css" rel="stylesheet">
+	<script src="js/vue.js"></script>
+	<script src="js/axios.js"></script>
+</head>
+
+<body style="background-color: rgb(45, 58, 76);">
+	<div id="app">
+		<header class="mui-bar mui-bar-nav"
+			style="background-color: rgb(45, 58, 76);color: white;box-shadow:none;border: 1px solid #313131d;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+			<h1 class="mui-title" style="color: white;">电影</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 0px;">
+				<div style="width:	 98%;margin-left: 1%;height: auto;overflow: hidden;color: white;">
+					<div style="width: 100%;height: auto;overflow: hidden;">
+						<div style="width: 96%;margin-left: 2%;height: 160px;padding-top: 10px;">
+							<div style="width: 100px; height: 140px;float: left;">
+								<img src="images/p2635676317.webp" style="width: 100%;height: 100%;" />
+							</div>
+							<div style="height: 140px;width:60%; float: left;margin-left: 15px;">
+								<div style="width: 100%;height:30px;font-size: 16px;color: white;">
+									六 人-泰坦尼克上的中国幸存者
+								</div>
+								<div style="width: 100%;height:30px;font-size: 14px;color: white;">
+									The Six（2020）
+								</div>
+								<div style="width: 100%;height:30px;font-size: 12px;color: #C7C7CC;">
+									中国大陆 / 纪录片 / 2021-04-16(中国大陆)上映 / 片长102分钟
+								</div>
+
+								<div style="width: 100%;height:30px;font-size: 12px;line-height: 30px;margin-top: 17px;">
+									<button class="mui-btn" style="width: 100px;float: left;">想看</button>
+									<button class="mui-btn" style="width: 100px;float: left;margin-left:10px;">看过</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div style="width:98%;margin-left: 1%;height: auto;overflow: hidden;">
+						简介<br />
+						<div style="width: 100%;height: auto;font-size:12px ;">
+							&nbsp;
+							1912年4月14日泰坦尼克号沉没后几乎所有幸存者被送回至纽约港口，唯独六名中国幸存者，他们获救后在24小时之内被美国驱逐出境，他们的逃生经历几乎不被记录，甚至被刻意抹去。本片由詹姆斯·卡梅隆监制，我们将跟随调查者，
+							追寻这六人从人类史上最大海难中死里逃生的经历和人生轨迹，拆穿被掩盖一个世纪之久的谎言。
+						</div>
+					</div>
+					<div style="width:98%;margin-left: 1%;height: auto;overflow: hidden;">
+						简介<br />
+						<div style="width: 100%;height: auto;font-size:12px ;">
+
+							&nbsp;
+							1912年4月14日泰坦尼克号沉没后几乎所有幸存者被送回至纽约港口，唯独六名中国幸存者，他们获救后在24小时之内被美国驱逐出境，他们的逃生经历几乎不被记录，甚至被刻意抹去。本片由詹姆斯·卡梅隆监制，我们将跟随调查者，
+							追寻这六人从人类史上最大海难中死里逃生的经历和人生轨迹，拆穿被掩盖一个世纪之久的谎言。
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" href="#tabbar">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-chat">
+			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-tab-label">消息</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-contact">
+			<span class="mui-icon mui-icon-contact"></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+
+	</nav>
+	<script>
+		mui.init();
+		new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello Vue.js!',
+				flag: true,
+			},
+			mounted() {
+				axios
+					.get('https://cc.cckimi.top/api.php/provide/vod/?ac=list')
+					.then(response => (this.message = response, console.log(response.data.data)))
+					.catch(function (error) { // 请求失败处理
+						console.log(error);
+					});
+			},
+			methods: {
+				selectYing: function () {
+					this.flag = !this.flag;
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet">
+		<script src="js/vue.js"></script>
+		<script src="js/axios.js"></script>
+
+
+	</head>
+	<body>
+		<div id="app">
+			<header class="mui-bar mui-bar-nav">
+				<h1 class="mui-title">电影资讯</h1>
+			</header>
+			<div class="mui-content">
+				<div class="mui-content-padded">
+					<div style="width: 100%;height: auto;overflow: hidden;">
+						<div class="nav_per">
+							<div class="nav_per_top">
+								<img src="img/search.png" style="width:30%;height:25px;margin-top: 3px;" />
+							</div>
+							<div class="nav_per_bottom">
+								搜电影
+							</div>
+						</div>
+
+						<div class="nav_per">
+							<div class="nav_per_top">
+								<img src="img/sort.png" style="width:30%;height:25px;margin-top: 3px;" />
+							</div>
+							<div class="nav_per_bottom">
+								电影榜单
+							</div>
+						</div>
+
+						<div class="nav_per">
+							<div class="nav_per_top">
+								<img src="img/time.png" style="width:30%;height:25px;margin-top: 3px;" />
+							</div>
+							<div class="nav_per_bottom">
+								即将上映
+							</div>
+						</div>
+
+						<div class="nav_per">
+							<div class="nav_per_top">
+								<img src="img/movie.png" style="width:30%;height:25px;margin-top: 3px;" />
+							</div>
+							<div class="nav_per_bottom">
+								电影片单
+							</div>
+						</div>
+					</div>
+					<!--影院热映、豆瓣热门-->
+					<div class="reying">
+
+						<div style="width: 100%;height: 30px;">
+							<div style="float: left;" v-show="flag" @click="selectYing()">影院热映</div>
+							<div style="float: left; color: #CCCCCC;" v-show="!flag" @click="selectYing()">影院热映</div>
+							<div style="float: left;width: 10px;">| </div>
+							<div style="float: left;" v-show="!flag" @click="selectYing()">豆瓣热门</div>
+							<div style="float: left; color: #CCCCCC;" v-show="flag" @click="selectYing()">豆瓣热门</div>
+							<div style="float: right; color: black;font-size: 10px;">全部17&nbsp;></div>
+
+						</div>
+						<div class="reyingAll">
+							<div class="reyingAllPer">
+								<div class="per_img">
+									<img src="images/shiyihui.webp" />
+								</div>
+								<div style="width: 100%;height: 20px; ">
+									<div class="per_movieName">
+										<strong>第十一回</strong>
+									</div>
+									<div class="per_movieScore">7.5</div>
+								</div>
+							</div>
+
+							<div class="reyingAllPer">
+								<div class="per_img">
+									<img src="images/p2630463690.webp" />
+								</div>
+								<div style="width: 100%;height: 20px; ">
+									<div class="per_movieName">
+										<strong>我的姐姐</strong>
+									</div>
+									<div class="per_movieScore">7.1</div>
+								</div>
+							</div>
+							<div class="reyingAllPer">
+								<div class="per_img">
+									<img src="images/p2636651422.webp" />
+								</div>
+								<div style="width: 100%;height: 20px; ">
+									<div class="per_movieName">
+										<strong>六月未央</strong>
+									</div>
+									<div class="per_movieScore">4.5</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+					<!--国内即将上映-->
+					<div style="width: 98%;height: 90px;margin-left: 1%;margin-top: 20px;">
+						<div class="jijiang">
+							<div class="jijiang_title">
+								国内即将上映
+							</div>
+							<div class="jijiang_title_right">
+								>&nbsp;&nbsp;&nbsp;
+							</div>
+
+							<div class="jijiang_more">
+								近期有9部<br />热门电影
+							</div>
+							<div class="jijiang_content_right">
+								<img src="images/p2640236255.webp" />
+							</div>
+
+						</div>
+
+						<div class="jijiang">
+							<div class="jijiang_title">
+								全球值得期待
+							</div>
+							<div class="jijiang_title_right">
+								>&nbsp;&nbsp;&nbsp;
+							</div>
+
+							<div class="jijiang_more">
+								近期有9部<br />热门电影
+							</div>
+							<div class="jijiang_content_right">
+								<img src="images/p2640236255.webp" />
+							</div>
+
+						</div>
+					</div>
+
+
+<div class="shishiremendianying">
+	
+</div>
+
+
+
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-chat">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+
+		</nav>
+		<script>
+			mui.init();
+			new Vue({
+				el: '#app',
+				data: {
+					message: 'Hello Vue.js!',
+					flag: true,
+				},
+				mounted() {
+					axios
+						.get('https://cc.cckimi.top/api.php/provide/vod/?ac=list')
+						.then(response => (this.message = response, console.log(response.data.data)))
+						.catch(function(error) { // 请求失败处理
+							console.log(error);
+						});
+				},
+				methods: {
+					selectYing: function() {
+						this.flag = !this.flag;
+
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
